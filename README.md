@@ -1,6 +1,7 @@
 # Lab 2 ECE 7785 - Detect a ball and rotate Turtlebot3
 
 The overall goal of the project is to detect the location of a ball and orient TurtleBot 3 to face the ball. From an implementation perspective, this lab deals with Robot Operating System (ROS) and OpenCV (Open-source Computer Vision Library). 
+
 OpenCV methods are used for detecting the ball and ROS is used for linking perception stage to actuation stage. A ROS package named `ball_follower` is created and within the package 2 ROS nodes are implemented - `find_ball` and `drive_wheel`. (The detection script and nodes are implemented in Python)
 **Note:** An additional node `ball_rosbag.py` is provided for testing on the rosbag files. This is covered in detail below.
 
