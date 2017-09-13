@@ -1,5 +1,5 @@
 # Lab 2 ECE 7785 - Detect a ball and rotate Turtlebot3
-The overall goal of the project is to detect the location of a ball and rotate the Turtlebot3 robot to orient itself and face the ball. From an implementation perspective, this lab deals with Robot Operating System (ROS) and OpenCV (Open-source Computer Vision Library). OpenCV methods are used for detecting the ball and ROS is used for linking perception stage to actuation stage. A ROS package named *ball_follower* is created and within the package 2 ROS nodes are implemented - *find_ball.py* and *drive_wheel.py*.
+The overall goal of the project is to detect the location of a ball and rotate the Turtlebot3 robot to orient itself and face the ball. From an implementation perspective, this lab deals with Robot Operating System (ROS) and OpenCV (Open-source Computer Vision Library). OpenCV methods are used for detecting the ball and ROS is used for linking perception stage to actuation stage. A ROS package named *ball_follower* is created and within the package 2 ROS nodes are implemented - *find_ball* and *drive_wheel*. (The detection script and nodes are implemented in Python)
 
 ## Pereception - Ball Detection (color-based)
 
@@ -20,40 +20,55 @@ Simply move the *ball_follower* ROS package from the git folder over to your cat
 ```
 mv <your_download_directory>/ECE7785_Lab2/ball_follower <your_path_to_catkin>/catkin_ws/src
 cd <your_path_to_catkin>/catkin_ws
+catkin_make
 source devel.setup
 ```
 
-### Use *ball_detect.py* for webcam testing
+### Running the webcam with *ball_detect.py*
 
-The *ball_detect.py* script can be found under *ECE7785_Lab2/test_scripts/* and can be used either for detecting a ball using your laptop's webcam interface. A tracker is also provided for you to play with the HSV threshold values to be able to find color ranges for different colored balls.
+The *ball_detect.py* script can be found under *ECE7785_Lab2/test_scripts/* and can be used either for detecting a ball using your laptop's webcam interface. *ball_detect.py* is NOT a ROS node. You do not need roscore running for it. A tracker is also provided for you to play with the HSV threshold values to be able to find color ranges for different colored balls.
 ```
 cd <your_download_directory>/ECE7785_Lab2/test_scripts/
 python ball_detect.py
 ```
 
-### Running rosbag files with *ball_detect.py*
+### Running rosbag files with *ball_rosbag.py*
 
-Explain what these tests test and why
+You can also use rosbag files to test your node *find_ball* if it is subscribing to the *raspicam_node* running on the Turtlebot3 and receiving stream of images. *ball_rosbag.py* is a ROS node and you need roscore running, need to make your catkin workspace, and source your bash file.
 
 ```
-Give an example
+[burger] roslaunch raspicam_node camerav2_1280x960.launch
+
+[Remote PC] rosrun ball_follower ball_rosbag.py
 ```
 
 ### Changing the resolution of the Pi-camera
 
-Explain what these tests test and why
+The default launch files provided in the ```raspicam_node/launch``` directory uses hi-resolution parameters with 30 fps. It can be tweaked to lower the resolution and change the frame rate.
 
 ```
-Give an example
+[burger] cd ~/catkin_ws/src/raspicam_node/launch
+cp camerav2_1280x960.launch camerav2_320x240.launch
+sudo nano camerav2_320x240.launch
+```
+Choose your preferred editor (nano, vim) and edit the parameters for ```width```, ```height```, and ```frame```.
+
+## On-board deployment to Turtlebot3
+
+### Moving *ball_follower* package to Pi
+Tar the *ball_follower* package on your Remote PC
+```
 ```
 
-## Deployment
+Untar the file on Raspberry Pi
+
+### 
 
 Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* 
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
