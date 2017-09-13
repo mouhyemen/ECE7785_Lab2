@@ -1,14 +1,15 @@
 # Lab 2 ECE 7785 - Detect a ball and rotate Turtlebot3
----
-The overall goal of the project is to detect the location of a ball and rotate the Turtlebot3 robot to orient itself and face the ball. From an implementation perspective, this lab deals with Robot Operating System (ROS) and OpenCV (Open-source Computer Vision Library). 
+
+The overall goal of the project is to detect the location of a ball and orient TurtleBot 3 to face the ball. From an implementation perspective, this lab deals with Robot Operating System (ROS) and OpenCV (Open-source Computer Vision Library). 
 OpenCV methods are used for detecting the ball and ROS is used for linking perception stage to actuation stage. A ROS package named `ball_follower` is created and within the package 2 ROS nodes are implemented - `find_ball` and `drive_wheel`. (The detection script and nodes are implemented in Python)
 **Note:** An additional node `ball_rosbag.py` is provided for testing on the rosbag files. This is covered in detail below.
 
+---
 ## Setting up the ROS package
 These instructions will get you a copy of the scripts and running on your local machine for development and testing purposes.
 
 ### Download the repository
-First download the git repository which contains the ROS package, additional python scripts for user testing.
+First download the git repository which contains the ROS package and additional python scripts for user testing.
 ```
 [PC] cd <your_download_directory>
 [PC] git clone https://github.com/mouhyemen/ECE7785_Lab2.git 
@@ -26,6 +27,7 @@ Simply move the `ball_follower` ROS package from the git folder over to your cat
 ```
 Now you have the `ball_follower` package in your workspace and can try out the nodes inside the package.
 
+---
 ## Testing the ROS package
 The ROS package `ball_follower` can be tested in 3 ways:
 * Subscribing to `raspicam_node` on Remote PC and using rosbag files on Remote PC
@@ -73,7 +75,7 @@ The `ball_detect.py` script can be found under `ECE7785_Lab2/test_scripts/` and 
 [PC] python ball_detect.py
 ```
 
-
+---
 ## On-board deployment to Turtlebot3
 
 ### Moving *ball_follower* package to Pi
@@ -102,15 +104,27 @@ The last two commands will untar the `follower.tar` file and check if it is pres
 [burger] catkin_make
 [burger] source devel/setup.bash
 ```
+### Testing ROS nodes on TurtleBot 3
+Now, all the nodes will be run on TurtleBot 3's raspberry pi module. You will need to `ssh` on multiple terminal windows to run each node/launch file.
 
+Launch the `raspicam_node` with preferred choice of resolution and `bringup3` for driving the wheels.
+```
+[burger] roslaunch raspicam_node camerav2_320x240.launch
+[burger] roslaunch turtlebot3_bringup turtlebot3_robot.launch
+```
+Next, we will run the `find_ball.py` and `drive_wheel.py` nodes on TurtleBot 3 to detect the ball and orient the robot respectively.
+```
+[burger] rosrun ball_follower find_ball.py
+[burger] rosrun ball_follower drive_wheel.py
+```
 
-
-
-
+---
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Chia-Wen Kuo - For providing the rosbag files
+* Bogdan Vlahov - For explaining how to run rosbag files
+* Elizabeth - For explaining how to pass messages between nodes
+* Cesar Santoyo - For helping to set up `ROS_MASTER_URI` and `ROS_HOSTNAME` parameters
+* Dr. Sonia, Sean, and Dave - For getting up and started with ROS
 
 
