@@ -6,7 +6,6 @@ OpenCV methods are used for detecting the ball and ROS is used for linking perce
 
 **Note:** An additional node `ball_rosbag.py` is provided for testing on the rosbag files. This is covered in detail below.
 
----
 ## Setting up the ROS package
 These instructions will get you a copy of the scripts and running on your local machine for development and testing purposes.
 
@@ -77,7 +76,6 @@ The `ball_detect.py` script can be found under `ECE7785_Lab2/test_scripts/` and 
 [PC] python ball_detect.py
 ```
 
----
 ## On-board deployment to Turtlebot3
 
 ### Moving *ball_follower* package to Pi
@@ -120,7 +118,6 @@ Next, we will run the `find_ball.py` and `drive_wheel.py` nodes on TurtleBot 3 t
 [burger] rosrun ball_follower drive_wheel.py
 ```
 
----
 ## Acknowledgments
 
 * Chia-Wen Kuo - For providing the rosbag files
