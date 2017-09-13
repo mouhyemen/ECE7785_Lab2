@@ -8,10 +8,10 @@ These instructions will get you a copy of the scripts and running on your local 
 
 ### Download the repository
 First download the git repository which contains the ROS package, additional python scripts for user testing.
-```
+`
 [PC] cd <your_download_directory>
 [PC] git clone https://github.com/mouhyemen/ECE7785_Lab2.git 
-```
+`
 
 ### Move the package to ROS workspace
 
