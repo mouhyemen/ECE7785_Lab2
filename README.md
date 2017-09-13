@@ -31,7 +31,7 @@ Now you have the `ball_follower` package in your workspace and can try out the n
 ---
 ## Testing the ROS package
 The ROS package `ball_follower` can be tested in 3 ways:
-* Subscribing to `raspicam_node` on Remote PC and using rosbag files on Remote PC
+* (Optional) Subscribing to `raspicam_node` on Remote PC and using rosbag files on Remote PC
 * Subscribing to & launching `raspicam_node` on TurtleBot3 and testing it on Remote PC (off-board)
 * (Optional) Testing color-based perception algorithm using Remote PC's webcam (not part of ROS package)
 * Subscribing to & launching `raspicam_node` on TurtleBot3 and testing it on Turtlebot3 (on-board)
@@ -64,7 +64,7 @@ The default launch files provided in the `raspicam_node/launch` directory uses h
 Choose your preferred editor (nano, vim) and edit the parameters for `width`, `height`, and `frame`. Make sure to save the file. Now you can re-launch the ```raspicam_node``` running on Turtlebot3 with the launch file we just created.
 
 ```
-[burger] roslaunch raspicam_node camerav2_1280x960.launch
+[burger] roslaunch raspicam_node camerav2_320x240.launch
 ```
 
 ### (Optional) Running the webcam with *ball_detect.py*
