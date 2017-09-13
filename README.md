@@ -1,42 +1,37 @@
 # Lab 2 ECE 7785 - Detect a ball and rotate Turtlebot3
+The overall goal of the project is to detect the location of a ball and rotate the Turtlebot3 robot to orient itself and face the ball. From an implementation perspective, this lab deals with Robot Operating System (ROS) and OpenCV (Open-source Computer Vision Library). OpenCV methods are used for detecting the ball and ROS is used for linking perception stage to actuation stage. A ROS package named *ball_follower* is created and within the package 2 ROS nodes are implemented - *find_ball.py* and *drive_wheel.py*.
 
-The overall goal of the project is to detect the location of a ball and rotate the Turtlebot3 robot to orient itself and face the ball. From an implementation perspective, this lab deals with Robot Operating System (ROS) and OpenCV (Open-source Computer Vision Library). OpenCV methods are used for detecting the ball and ROS package named "ball_follower_" is created and within the package 2 ROS nodes are implemented - "find_ball.py" and "drive_wheel.py".
+## Pereception - Ball Detection (color-based)
 
-## Perception - Ball Detection
+These instructions will get you a copy of the scripts and running on your local machine for development and testing purposes.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
+### Download the repository
 
 ```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+cd <your_download_directory>
+git clone https://github.com/mouhyemen/ECE7785_Lab2.git 
 
 ```
-Give the example
+
+### Moving the package and making it
+
+Simply move the *ball_follower* ROS package from the git folder over to your catkin workspace.
+
+```
+mv <your_download_directory>/ECE7785_Lab2/ball_follower <your_path_to_catkin>/catkin_ws/src
+cd <your_path_to_catkin>/catkin_ws
+source devel.setup
 ```
 
-And repeat
+### Use *ball_detect.py* for webcam testing
 
+The *ball_detect.py* script can be found under *ECE7785_Lab2/test_scripts/* and can be used either for detecting a ball using your laptop's webcam interface. A tracker is also provided for you to play with the HSV threshold values to be able to find color ranges for different colored balls.
 ```
-until finished
+cd <your_download_directory>/ECE7785_Lab2/test_scripts/
+python ball_detect.py
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
+### Running rosbag files with *ball_detect.py*
 
 Explain what these tests test and why
 
@@ -44,7 +39,7 @@ Explain what these tests test and why
 Give an example
 ```
 
-### And coding style tests
+### Changing the resolution of the Pi-camera
 
 Explain what these tests test and why
 
