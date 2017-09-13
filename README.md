@@ -42,7 +42,7 @@ The ROS package `ball_follower` can be tested in 3 ways:
 [Download Link](https://drive.google.com/open?id=0B8HUrakRiMyeX3FiQXl2bkhGbVU) - Rosbag Files
 
 Unzip the rosbag file in your working directory. You can use rosbag files to test the node `find_ball` if it is subscribing to the `raspicam_node` and detecting the ball without requiring the TurtleBot 3. 
-`ball_rosbag.py` is a ROS node and it needs roscore running, making the workspace, and sourcing the bash file. Also, we need to be in the directory of the rosbag files to play the files.
+`ball_rosbag.py` is a ROS node and it needs roscore running, making the workspace, and sourcing the bash file. Also, we need to be in the directory of the rosbag files to play the files. Fill up this script with your own detection algorithm.
 
 ```
 [PC] roscore
