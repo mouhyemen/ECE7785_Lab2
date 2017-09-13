@@ -33,9 +33,9 @@ Now you have the `ball_follower` package in your workspace and can try out the n
 ## Testing the ROS package
 The ROS package `ball_follower` can be tested in 3 ways:
 * Subscribing to `raspicam_node` on Remote PC and using rosbag files on Remote PC
-* Subscribing to `raspicam_node` on TurtleBot3 and testing it on Remote PC (off-board)
+* Subscribing & launching `raspicam_node` on TurtleBot3 and testing it on Remote PC (off-board)
 * (Optional) Testing color-based perception algorithm using Remote PC's webcam (not part of ROS package)
-* Subscribing to `raspicam_node` on TurtleBot3 and testing it on Turtlebot3 (on-board)
+* Subscribing & launching `raspicam_node` on TurtleBot3 and testing it on Turtlebot3 (on-board)
 
 
 ### Running rosbag files with *ball_rosbag.py* node
