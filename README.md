@@ -1,40 +1,39 @@
 # Lab 2 ECE 7785 - Detect a ball and rotate Turtlebot3
-The overall goal of the project is to detect the location of a ball and rotate the Turtlebot3 robot to orient itself and face the ball. From an implementation perspective, this lab deals with Robot Operating System (ROS) and OpenCV (Open-source Computer Vision Library). OpenCV methods are used for detecting the ball and ROS is used for linking perception stage to actuation stage. A ROS package named *ball_follower* is created and within the package 2 ROS nodes are implemented - *find_ball* and *drive_wheel*. (The detection script and nodes are implemented in Python)
+The overall goal of the project is to detect the location of a ball and rotate the Turtlebot3 robot to orient itself and face the ball. From an implementation perspective, this lab deals with Robot Operating System (ROS) and OpenCV (Open-source Computer Vision Library). 
+OpenCV methods are used for detecting the ball and ROS is used for linking perception stage to actuation stage. A ROS package named ```ball_follower``` is created and within the package 2 ROS nodes are implemented - ```find_ball``` and ```drive_wheel```. (The detection script and nodes are implemented in Python)
 
-## Pereception - Ball Detection (color-based)
+## Download the repository
 
 These instructions will get you a copy of the scripts and running on your local machine for development and testing purposes.
 
-### Download the repository
-
 ```
-cd <your_download_directory>
-git clone https://github.com/mouhyemen/ECE7785_Lab2.git 
+[PC] cd <your_download_directory>
+[PC] git clone https://github.com/mouhyemen/ECE7785_Lab2.git 
 
 ```
 
 ### Moving the package and making it
 
-Simply move the *ball_follower* ROS package from the git folder over to your catkin workspace.
+Simply move the ```ball_follower``` ROS package from the git folder over to your catkin workspace.
 
 ```
-mv <your_download_directory>/ECE7785_Lab2/ball_follower <your_path_to_catkin>/catkin_ws/src
-cd <your_path_to_catkin>/catkin_ws
-catkin_make
-source devel.setup
+[PC] mv <your_download_directory>/ECE7785_Lab2/ball_follower <your_path_to_catkin>/catkin_ws/src
+[PC] cd <your_path_to_catkin>/catkin_ws
+[PC] catkin_make
+[PC] source devel.setup
 ```
 
 ### Running the webcam with *ball_detect.py*
 
-The *ball_detect.py* script can be found under *ECE7785_Lab2/test_scripts/* and can be used either for detecting a ball using your laptop's webcam interface. *ball_detect.py* is NOT a ROS node. You do not need roscore running for it. A tracker is also provided for you to play with the HSV threshold values to be able to find color ranges for different colored balls.
+The ```ball_detect.py``` script can be found under ```ECE7785_Lab2/test_scripts/``` and can be used either for detecting a ball using your laptop's webcam interface. ```ball_detect.py``` is NOT a ROS node. You do not need roscore running for it. A tracker is also provided for you to play with the HSV threshold values to be able to find color ranges for different colored balls.
 ```
-cd <your_download_directory>/ECE7785_Lab2/test_scripts/
-python ball_detect.py
+[PC] cd <your_download_directory>/ECE7785_Lab2/test_scripts/
+[PC] python ball_detect.py
 ```
 
 ### Running rosbag files with *ball_rosbag.py*
 
-You can also use rosbag files to test your node *find_ball* if it is subscribing to the *raspicam_node* running on the Turtlebot3 and receiving stream of images. *ball_rosbag.py* is a ROS node and you need roscore running, need to make your catkin workspace, and source your bash file.
+You can also use rosbag files to test your node ```find_ball``` if it is subscribing to the ```raspicam_node``` running on the Turtlebot3 and receiving stream of images. ```ball_rosbag.py``` is a ROS node and you need roscore running, need to make your catkin workspace, and source your bash file.
 
 ```
 [burger] roslaunch raspicam_node camerav2_1280x960.launch
@@ -48,10 +47,18 @@ The default launch files provided in the ```raspicam_node/launch``` directory us
 
 ```
 [burger] cd ~/catkin_ws/src/raspicam_node/launch
-cp camerav2_1280x960.launch camerav2_320x240.launch
-sudo nano camerav2_320x240.launch
+[burger] cp camerav2_1280x960.launch camerav2_320x240.launch
+[burger] sudo nano camerav2_320x240.launch
 ```
-Choose your preferred editor (nano, vim) and edit the parameters for ```width```, ```height```, and ```frame```.
+Choose your preferred editor (nano, vim) and edit the parameters for ```width```, ```height```, and ```frame```. Make sure to save the file. Now you can re-launch the ```raspicam_node``` running on Turtlebot3 with the launch file we just created.
+
+```
+[burger] roslaunch raspicam_node camerav2_1280x960.launch
+```
+
+
+
+
 
 ## On-board deployment to Turtlebot3
 
