@@ -24,7 +24,7 @@ Simply move the `ball_follower` ROS package from the git folder over to your cat
 [PC] mv <your_download_directory>/ECE7785_Lab2/ball_follower <your_path_to_catkin>/catkin_ws/src
 [PC] cd <your_path_to_catkin>/catkin_ws
 [PC] catkin_make
-[PC] source devel.setup
+[PC] source devel/setup
 ```
 Now you have the `ball_follower` package in your workspace and can try out the nodes inside the package.
 
